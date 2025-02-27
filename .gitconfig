@@ -1,0 +1,52 @@
+[user]
+  name=Samuel Wood
+  email=samote.wood@gmail.com
+
+[github]
+  user = sw00d
+
+[alias]
+  track = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
+  code-changes = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
+  lgb = "!git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches"
+
+[push]
+	default = current
+
+[color]
+  ui = true
+
+[core]
+  editor = vim
+	excludesfile = ~/.gitignore
+	ignorecase = false
+  # Nicer git diffs
+  #pager = /usr/share/git/diff-highlight/diff-highlight | less -rx1,5
+  #pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
+
+[format]
+  pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+  graph = true
+
+[advice]
+  statusHints = false
+
+[log]
+  abbrevCommit = true
+
+[mergetool]
+	keepBackup = false
+[init]
+	templatedir = ~/.git_template
+	defaultBranch = main
+[ghi]
+	token = !security find-internet-password -a ckcollab -s github.com -l 'ghi token' -w
+[pull]
+	rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = store
